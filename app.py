@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, session
 import requests
+import os
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key_here"  # Ganti dengan string acak yang aman
@@ -56,4 +57,4 @@ def clear_history():
     return jsonify({"status": "cleared"})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
